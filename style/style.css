@@ -1,0 +1,206 @@
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* --- This is the style for the navigation bar --- */
+.navbar {
+  width: 100vw;         
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;           
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 75px;
+  z-index: 1000;
+  box-sizing: border-box;    
+}
+
+.navbar h1 {
+  font-size: 26px;
+  letter-spacing: 1px;
+  margin-left: 20px;         
+}
+
+.navbar ul {
+  display: flex;
+  gap: 25px;                 
+  margin: 0;
+  padding-right: 20px;       
+  list-style: none;
+  flex-wrap: wrap;           
+}
+
+.navbar ul li a {
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;        
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #ffcc00;
+}
+/* --- This is the style for the main div, the main content of my page --- */
+.main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  padding: 120px 80px 60px; 
+  gap: 40px;
+}
+
+/* This is the style for the content of the left div-box  */
+.left-content {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9f3;
+  border-radius: 25px;
+  padding: 25px;
+  transition: box-shadow 0.4s ease;
+}
+
+.left-content:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.left-content img {
+  width: 320px; 
+  height: auto;
+  border-radius: 20px; 
+  border: 3px solid black; 
+  object-fit: cover; 
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.left-content img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.right-content {
+  width: 45%;
+}
+
+.right-content h3 {
+  font-size: 28px;       
+  margin-bottom: 10px;
+}
+
+.left-div h3 {
+    font-weight: 800; 
+    color: #030300; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 3.5rem; 
+    letter-spacing: 1px; 
+}
+
+
+/* This is the style for the content of the right side div-box  */
+.right-content h1 {
+  font-size: 64px;       
+  color: #222;
+  margin: 12px 0;
+  line-height: 1.2;     
+}
+
+.right-content p {
+  font-size: 20px;       
+  line-height: 1.8;
+  max-width: 550px;
+}
+
+/* Style for the button */
+.btn-contact {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #ffcc00; 
+  color: #000;               
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-contact:hover {
+  background-color: #e6b800;  
+  transform: translateY(-3px); 
+}
+
+/* This is the style for the footer */
+.footer-box {
+width: 100%;
+  height: 80px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  line-height: 80px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 40px;
+  padding: 0 80px; 
+}
+
+/* style for the project page */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  padding: 0;
+  list-style: none;
+}
+
+.skills li {
+  background-color: #FFD700; 
+  color: #000; 
+  padding: 8px 15px;
+  border-radius: 20px; 
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.skills li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #FFD700; 
+  color: #000; 
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+  margin-bottom: 20px; 
+}
+
+.back-button:hover {
+  background-color: #FFC107; 
+  transform: scale(1.05); 
+}
