@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HomeEase</title>
   <link rel="stylesheet" href="/normalize.css">
-  <link rel="stylesheet" href="/Home/style.css">
+  <link rel="stylesheet" href="/Cart/cart.css">
+  <script src="/Cart/cart.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/images /Logo copy.gif">
 </head>
@@ -25,7 +25,7 @@
     
     <!-- === Navigation Bar === -->
     <nav class="nav">
-      <a href="Home.html" class="active"><img src="/icons/home.png" alt="Home icon"> Home</a>
+      <a href="/Home/Home.html"><img src="/icons/home.png" alt="Home icon"> Home</a>
       <a href="/products/products.html"><img src="/icons/box.png" alt="Products icon"> Products</a>
       <a href="/About /about.html"><img src="/icons/information.png" alt="About icon"> About</a>
       <a href="/Contact/contact.html"><img src="/icons/telephone.png" alt="Contact icon"> Contact</a>
@@ -47,7 +47,7 @@
         </select>
       </div>
 
-      <!-- Shopping Cart (icon + blue badge, clickable) -->
+      <!-- Shopping Cart -->
       <a href="/Cart/cart.html" class="cart-link">
         <div class="cart-wrapper">
           <span class="cart-count">0</span>
@@ -62,132 +62,71 @@
       </a>
     </div>
   </header>
-  <!-- ==== MAIN ====-->
-  <main>
-    <!-- Hero section (Setayesh's work)-->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__content">
-        <h2 id="hero-title"><span class="color">Everything</span> for your <span class="color">dream home</span></h2>
-        <p>
-          From furniture to kitchenware, electronics to lighting—find everything you need
-          to make your house feel like home, all in one place.
-        </p>
-        <a href="#" class="btn-outline">Shop now</a>
-      </div>
+  <!-- main -->
+  <main class="cart-page">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <p>Review your items before checkout.</p>
+    </div>
 
-      <!-- Hero images-->
-      <div class="hero__media">
-        <div class="hero-slider">
-          <img src="/images /House-2.png" alt="Cozy living room" >
-           <img src="/images /Home.png" alt="Modern interior"> 
-        </div>        
-      </div>
+    <!-- Empty state -->
+    <section class="empty-cart" id="empty-cart">
+      <p>Your cart is currently empty.</p>
+      <a href="/products/products.html" class="btn-primary">Continue shopping</a>
     </section>
 
-    <!-- Categories grid (Saira's work) -->
-    <section class="cats" aria-labelledby="cats-title">
-      <div class="section-head">
-        <h3 id="cats-title">Shop by Category</h3>
-        <p>Find everything you need for every room in your home</p>
-      </div>
-
-      <!-- Category cards -->
-      <div class="cats__grid">
-        <!-- Furniture -->
-        <a href="#" class="cat-card" aria-label="Furniture">
-          <span class="cat-ico ">
-            <img src="/icons/long-sofa.png" alt="armchair"/>
-          </span>
-          <span class="cat-title">Furniture</span>
-        </a>
-
-        <!-- Electronics -->
-        <a href="#" class="cat-card" aria-label="Electronics">
-          <span class="cat-ico">
-            <img src="/icons/television.png" alt="television"/>
-          </span>
-          <span class="cat-title">Electronics</span>
-        </a>
-
-        <!-- Lighting -->
-        <a href="#" class="cat-card" aria-label="Lighting">
-          <span class="cat-ico">
-            <img src="/icons/idea.png" alt="lightbulb"/>
-          </span>
-          <span class="cat-title">Lighting</span>
-        </a>
-
-        <!-- Decor -->
-        <a href="#" class="cat-card" aria-label="Decor">
-          <span class="cat-ico">
-            <img src="/icons/modern.png" alt="Decor"/>
-          </span>
-          <span class="cat-title">Decor</span>
-        </a>
-
-        <!-- Bedding -->
-        <a href="#" class="cat-card" aria-label="Bedding">
-          <span class="cat-ico">
-            <img src="/icons/bed.png" alt="bed"/>
-          </span>
-          <span class="cat-title">Bedding</span>
-        </a>
-
-        <!-- Kitchenware -->
-        <a href="#" class="cat-card" aria-label="Kitchenware">
-          <span class="cat-ico">
-            <img src="/icons/chef.png" alt="kitchenware"/>
-          </span>
-          <span class="cat-title">Kitchenware</span>
-        </a>
-
-        <!-- Storage -->
-        <a href="#" class="cat-card" aria-label="Storage">
-          <span class="cat-ico">
-            <img src="/icons/box copy.png" alt="box"/>
-          </span>
-          <span class="cat-title">Storage</span>
-        </a>
-
-        <!-- Appliances -->
-        <a href="#" class="cat-card" aria-label="Appliances">
-          <span class="cat-ico">
-            <img src="/icons/electrical-appliance.png" alt="Appliances"/>
-          </span>
-          <span class="cat-title">Appliances</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Featured products (Rolando's work)-->
-    <section id="featured" class="featured" aria-labelledby="featured-title">
-      <div class="featured-header">
-        <div>
-          <h3 id="featured-title">Featured Products</h3>
-          <p>Our most popular items, loved by thousands of customers</p>
+    <!-- Cart content (hidden when empty) -->
+    <section class="cart-content" id="cart-content">
+      <div class="cart-layout">
+        <!-- Items table -->
+        <div class="cart-items">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="th-center">Price</th>
+                <th class="th-center">Quantity</th>
+                <th class="th-right">Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-body">
+            </tbody>
+          </table>
         </div>
-        <a href="#" class="view-all">View All →</a>
-      </div>
 
-      <!-- Product cards -->
-      <div class="featured-grid">
-        <div class="featured-card">
-          <img src="/images /Kitchen.png" alt="Product 1">
-        </div>
-        <div class="featured-card">
-          <img src="/images /Kitchen-2.png" alt="Product 2">
-        </div>
-        <div class="featured-card">
-          <img src="/images /Lamp1.png" alt="Product 3">
-        </div>
-        <div class="featured-card">
-          <img src="/images /Mirror.png" alt="Product 4" >
-        </div>
+        <!-- Summary card -->
+        <aside class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Items</span>
+            <span id="summary-items">0</span>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Estimated tax (10%)</span>
+            <span id="summary-tax">$0.00</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summary-total">$0.00</span>
+          </div>
+
+          <button class="btn-primary summary-btn" type="button">
+            Proceed to checkout
+          </button>
+
+          <a href="/products/products.html" class="back-link">
+            ← Continue shopping
+          </a>
+        </aside>
       </div>
     </section>
   </main>
-
- <!-- ==== FOOTER(Team work) ==== -->
+   <!-- ==== FOOTER ==== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-section brand">
@@ -204,7 +143,6 @@
         <h3>Quick Links</h3>
         <ul>
           <li><a href="/Home/Home.html">Home</a></li>
-          <li><a href="/products/products.html">products</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -265,7 +203,7 @@
       <p>Built with ❤️ for your home.</p>
     </div>
   </footer>
-  <script src="/Home/home.js"></script>
+  <script src="/account/account.js"></script>
   <script src="/Cart/header-cart.js" defer></script>
 </body>
 </html>

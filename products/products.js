@@ -68,6 +68,70 @@ document.addEventListener("DOMContentLoaded", () => {
     return acc;
   }, {});
 
+  // ================== CART STATE (shared via localStorage) ==================
+  const cartBadge = document.querySelector(".cart-count");
+
+  let cartItems = [];
+  try {
+    cartItems = JSON.parse(localStorage.getItem("homeease-cart-items") || "[]");
+  } catch {
+    cartItems = [];
+  }
+
+  function getTotalItems() {
+    return cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  function syncCartBadge() {
+    const total = getTotalItems();
+    localStorage.setItem("homeease-cart-count", String(total));
+
+    if (!cartBadge) return;
+
+    if (total <= 0) {
+      cartBadge.textContent = "0";
+      cartBadge.style.display = "none";
+    } else {
+      cartBadge.textContent = String(total);
+      cartBadge.style.display = "inline-flex";
+    }
+  }
+
+  // initial badge sync on page load
+  syncCartBadge();
+
+  function addToCart(productMeta) {
+    const existing = cartItems.find((p) => p.id === productMeta.id);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cartItems.push({
+        id: productMeta.id,
+        name: productMeta.name,
+        price: productMeta.price,
+        quantity: 1,
+      });
+    }
+
+    // save items to localStorage
+    localStorage.setItem("homeease-cart-items", JSON.stringify(cartItems));
+
+    // update count + badge
+    syncCartBadge();
+
+    // small animation
+    if (cartBadge) {
+      cartBadge.style.transform = "scale(1.2)";
+      cartBadge.style.transition = "transform 0.15s ease";
+      setTimeout(() => {
+        cartBadge.style.transform = "scale(1)";
+      }, 150);
+    }
+
+    console.log("Cart items:", cartItems);
+  }
+
   // ================= GRID & SIDEBAR BASE (Setayesh/Rolando) =================
   const productGrid = document.querySelector(".product-grid");
   const cards = Array.from(document.querySelectorAll(".product-card"));
@@ -196,18 +260,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const translations = {
     en: {
-      // nav
       navHome: "Home",
       navProducts: "Products",
       navAbout: "About",
       navContact: "Contact",
-
-      // header products
       productsTitle: "All Products",
       productsText: "Discover everything you need for your perfect home",
       productsSearchPlaceholder: "Search products...",
-
-      // search selects
       categorySelect: [
         "All Categories",
         "Lighting",
@@ -216,12 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Electronics",
       ],
       sortSelect: ["A–Z", "Z–A", "Lowest Price", "Highest Price"],
-
-      // sidebar
       sidebarCatsTitle: "Categories",
       sidebarCats: ["Lighting", "Appliances", "Decor", "Electronics"],
       sidebarCatsMore: "Show more",
-
       sidebarPriceTitle: "Price Range",
       sidebarPrice: [
         "Under $50",
@@ -230,12 +286,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "$200–500",
         "Over $500",
       ],
-
       sidebarBrandsTitle: "Brands",
       sidebarBrandsMore: "Show more",
       clearFilters: "Clear Filters",
-
-      // footer
       footerBrand:
         "Your one-stop destination for all home essentials. Quality, convenience, and value in one place.",
       footerQuickTitle: "Quick Links",
@@ -254,21 +307,15 @@ document.addEventListener("DOMContentLoaded", () => {
       footerFollowTitle: "Follow Us",
       footerBuilt: "Built with ❤️ for your home.",
     },
-
     fr: {
-      // nav
       navHome: "Accueil",
       navProducts: "Produits",
       navAbout: "À propos",
       navContact: "Contact",
-
-      // header products
       productsTitle: "Tous les produits",
       productsText:
         "Découvrez tout ce dont vous avez besoin pour votre maison idéale.",
       productsSearchPlaceholder: "Rechercher des produits...",
-
-      // search selects
       categorySelect: [
         "Toutes les catégories",
         "Éclairage",
@@ -282,12 +329,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Prix le plus bas",
         "Prix le plus élevé",
       ],
-
-      // sidebar
       sidebarCatsTitle: "Catégories",
       sidebarCats: ["Éclairage", "Électroménagers", "Décor", "Électronique"],
       sidebarCatsMore: "Afficher plus",
-
       sidebarPriceTitle: "Fourchette de prix",
       sidebarPrice: [
         "Moins de 50 $",
@@ -296,12 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "200–500 $",
         "Plus de 500 $",
       ],
-
       sidebarBrandsTitle: "Marques",
       sidebarBrandsMore: "Afficher plus",
       clearFilters: "Réinitialiser les filtres",
-
-      // footer
       footerBrand:
         "Votre destination unique pour tous les essentiels de la maison. Qualité, commodité et valeur au même endroit.",
       footerQuickTitle: "Liens rapides",
@@ -325,14 +366,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyLanguage(lang) {
     const t = translations[lang] || translations.en;
 
-    // --- nav ---
     const navLabels = [t.navHome, t.navProducts, t.navAbout, t.navContact];
     navLinks.forEach((link, i) => {
       const iconHTML = navIconsHTML[i] || "";
       link.innerHTML = iconHTML + " " + navLabels[i];
     });
 
-    // --- header products ---
     if (productsTitle) productsTitle.textContent = t.productsTitle;
     if (productsText) productsText.textContent = t.productsText;
     if (productsSearchInput)
@@ -348,7 +387,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // sort select
     if (sortSelect) {
       const opts = sortSelect.options;
       t.sortSelect.forEach((txt, i) => {
@@ -359,7 +397,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // --- sidebar: categories ---
     if (sidebarCatsTitle) sidebarCatsTitle.textContent = t.sidebarCatsTitle;
     sidebarCatsItems.forEach((li, i) => {
       if (t.sidebarCats[i]) {
@@ -368,7 +405,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     if (sidebarCatsMoreBtn) sidebarCatsMoreBtn.textContent = t.sidebarCatsMore;
 
-    // price range
     if (sidebarPriceTitle) sidebarPriceTitle.textContent = t.sidebarPriceTitle;
     sidebarPriceItems.forEach((li, i) => {
       if (t.sidebarPrice[i]) {
@@ -376,26 +412,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // brands
     if (sidebarBrandsTitle) sidebarBrandsTitle.textContent = t.sidebarBrandsTitle;
     if (sidebarBrandsMoreBtn)
       sidebarBrandsMoreBtn.textContent = t.sidebarBrandsMore;
 
     if (clearBtn) clearBtn.textContent = t.clearFilters;
 
-    // --- footer ---
     if (footerBrandText) footerBrandText.textContent = t.footerBrand;
-
     if (footerQuickTitle) footerQuickTitle.textContent = t.footerQuickTitle;
     footerQuickLinks.forEach((a, i) => {
       if (t.footerQuick[i]) a.textContent = t.footerQuick[i];
     });
-
     if (footerCatsTitle) footerCatsTitle.textContent = t.footerCatsTitle;
     footerCatsLinks.forEach((a, i) => {
       if (t.footerCats[i]) a.textContent = t.footerCats[i];
     });
-
     if (footerFollowTitle) footerFollowTitle.textContent = t.footerFollowTitle;
     if (footerBottomText) footerBottomText.textContent = t.footerBuilt;
   }
@@ -412,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= MAIN FILTERS & SORT(Saira/Setayesh) =================
+  // ================= MAIN FILTERS & SORT =================
   const products = cards
     .map((card) => {
       const name = card.querySelector("h4").textContent.trim();
@@ -433,6 +464,14 @@ document.addEventListener("DOMContentLoaded", () => {
       priceEl.textContent = `$ ${meta.price.toFixed(2)}`;
 
       renderStars(card, meta.rating);
+
+      const addBtn = card.querySelector(".add-to-cart-btn");
+      if (addBtn) {
+        addBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          addToCart(meta);
+        });
+      }
 
       return {
         card,
@@ -624,7 +663,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sorted.forEach((p) => productGrid.appendChild(p.card));
   }
 
-  // Clear Filters Button
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
       [...categoryLis, ...priceLis, ...brandLis].forEach((li) =>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HomeEase</title>
   <link rel="stylesheet" href="/normalize.css">
-  <link rel="stylesheet" href="/Home/style.css">
+  <link rel="stylesheet" href="/account/account.css">
+  <script src="/products/products.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/images /Logo copy.gif">
 </head>
@@ -25,7 +25,7 @@
     
     <!-- === Navigation Bar === -->
     <nav class="nav">
-      <a href="Home.html" class="active"><img src="/icons/home.png" alt="Home icon"> Home</a>
+      <a href="/Home/Home.html"><img src="/icons/home.png" alt="Home icon"> Home</a>
       <a href="/products/products.html"><img src="/icons/box.png" alt="Products icon"> Products</a>
       <a href="/About /about.html"><img src="/icons/information.png" alt="About icon"> About</a>
       <a href="/Contact/contact.html"><img src="/icons/telephone.png" alt="Contact icon"> Contact</a>
@@ -47,7 +47,7 @@
         </select>
       </div>
 
-      <!-- Shopping Cart (icon + blue badge, clickable) -->
+      <!-- Shopping Cart -->
       <a href="/Cart/cart.html" class="cart-link">
         <div class="cart-wrapper">
           <span class="cart-count">0</span>
@@ -61,133 +61,115 @@
         <span>Log in</span>
       </a>
     </div>
+
   </header>
-  <!-- ==== MAIN ====-->
-  <main>
-    <!-- Hero section (Setayesh's work)-->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__content">
-        <h2 id="hero-title"><span class="color">Everything</span> for your <span class="color">dream home</span></h2>
-        <p>
-          From furniture to kitchenware, electronics to lighting—find everything you need
-          to make your house feel like home, all in one place.
-        </p>
-        <a href="#" class="btn-outline">Shop now</a>
-      </div>
-
-      <!-- Hero images-->
-      <div class="hero__media">
-        <div class="hero-slider">
-          <img src="/images /House-2.png" alt="Cozy living room" >
-           <img src="/images /Home.png" alt="Modern interior"> 
-        </div>        
-      </div>
-    </section>
-
-    <!-- Categories grid (Saira's work) -->
-    <section class="cats" aria-labelledby="cats-title">
-      <div class="section-head">
-        <h3 id="cats-title">Shop by Category</h3>
-        <p>Find everything you need for every room in your home</p>
-      </div>
-
-      <!-- Category cards -->
-      <div class="cats__grid">
-        <!-- Furniture -->
-        <a href="#" class="cat-card" aria-label="Furniture">
-          <span class="cat-ico ">
-            <img src="/icons/long-sofa.png" alt="armchair"/>
-          </span>
-          <span class="cat-title">Furniture</span>
-        </a>
-
-        <!-- Electronics -->
-        <a href="#" class="cat-card" aria-label="Electronics">
-          <span class="cat-ico">
-            <img src="/icons/television.png" alt="television"/>
-          </span>
-          <span class="cat-title">Electronics</span>
-        </a>
-
-        <!-- Lighting -->
-        <a href="#" class="cat-card" aria-label="Lighting">
-          <span class="cat-ico">
-            <img src="/icons/idea.png" alt="lightbulb"/>
-          </span>
-          <span class="cat-title">Lighting</span>
-        </a>
-
-        <!-- Decor -->
-        <a href="#" class="cat-card" aria-label="Decor">
-          <span class="cat-ico">
-            <img src="/icons/modern.png" alt="Decor"/>
-          </span>
-          <span class="cat-title">Decor</span>
-        </a>
-
-        <!-- Bedding -->
-        <a href="#" class="cat-card" aria-label="Bedding">
-          <span class="cat-ico">
-            <img src="/icons/bed.png" alt="bed"/>
-          </span>
-          <span class="cat-title">Bedding</span>
-        </a>
-
-        <!-- Kitchenware -->
-        <a href="#" class="cat-card" aria-label="Kitchenware">
-          <span class="cat-ico">
-            <img src="/icons/chef.png" alt="kitchenware"/>
-          </span>
-          <span class="cat-title">Kitchenware</span>
-        </a>
-
-        <!-- Storage -->
-        <a href="#" class="cat-card" aria-label="Storage">
-          <span class="cat-ico">
-            <img src="/icons/box copy.png" alt="box"/>
-          </span>
-          <span class="cat-title">Storage</span>
-        </a>
-
-        <!-- Appliances -->
-        <a href="#" class="cat-card" aria-label="Appliances">
-          <span class="cat-ico">
-            <img src="/icons/electrical-appliance.png" alt="Appliances"/>
-          </span>
-          <span class="cat-title">Appliances</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Featured products (Rolando's work)-->
-    <section id="featured" class="featured" aria-labelledby="featured-title">
-      <div class="featured-header">
+<!-- Main -->
+  <main class="account-page">
+  <section class="account-layout">
+    <!-- Sidebar -->
+    <aside class="account-sidebar">
+      <div class="account-user">
+        <div class="avatar-circle" id="avatarInitial">S</div>
         <div>
-          <h3 id="featured-title">Featured Products</h3>
-          <p>Our most popular items, loved by thousands of customers</p>
+          <h2 id="accountName">Guest</h2>
+          <p id="accountEmail">guest@example.com</p>
         </div>
-        <a href="#" class="view-all">View All →</a>
       </div>
 
-      <!-- Product cards -->
-      <div class="featured-grid">
-        <div class="featured-card">
-          <img src="/images /Kitchen.png" alt="Product 1">
+      <nav class="account-nav">
+        <button class="account-nav-btn active" data-tab="overview">
+          Overview
+        </button>
+        <button class="account-nav-btn" data-tab="orders">
+          Orders
+        </button>
+        <button class="account-nav-btn" data-tab="settings">
+          Settings
+        </button>
+      </nav>
+
+      <div class="account-meta">
+        <p><strong>Member since:</strong> <span id="memberSince">2025</span></p>
+        <p><strong>Tier:</strong> <span id="memberTier">HomeEase Basic</span></p>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <section class="account-content">
+      <!-- Overview tab -->
+      <div class="account-tab active" id="tab-overview">
+        <h2>Account Overview</h2>
+        <p class="tab-subtitle">
+          Manage your personal details and see a quick summary of your activity.
+        </p>
+
+        <div class="overview-cards">
+          <div class="overview-card">
+            <h3>Personal Details</h3>
+            <p><strong>Name:</strong> <span id="ovName">Guest</span></p>
+            <p><strong>Email:</strong> <span id="ovEmail">guest@example.com</span></p>
+          </div>
+
+          <div class="overview-card">
+            <h3>Order Snapshot</h3>
+            <p><strong>Total orders:</strong> <span id="ovOrders">0</span></p>
+            <p><strong>Last order:</strong> <span id="ovLastOrder">—</span></p>
+          </div>
         </div>
-        <div class="featured-card">
-          <img src="/images /Kitchen-2.png" alt="Product 2">
+      </div>
+
+      <!-- Orders tab -->
+      <div class="account-tab" id="tab-orders">
+        <h2>Your Orders</h2>
+        <p class="tab-subtitle">
+          Track your recent purchases and check their status.
+        </p>
+
+        <div class="orders-list" id="ordersList">
         </div>
-        <div class="featured-card">
-          <img src="/images /Lamp1.png" alt="Product 3">
-        </div>
-        <div class="featured-card">
-          <img src="/images /Mirror.png" alt="Product 4" >
-        </div>
+      </div>
+
+      <!-- Settings tab -->
+      <div class="account-tab" id="tab-settings">
+        <h2>Account Settings</h2>
+        <p class="tab-subtitle">
+          Update your profile information and password.
+        </p>
+
+        <form class="account-form" id="profileForm" novalidate>
+          <div class="form-row">
+            <label for="profileName">Full Name</label>
+            <input type="text" id="profileName" name="profileName" required />
+          </div>
+
+          <div class="form-row">
+            <label for="profileEmail">Email Address</label>
+            <input type="email" id="profileEmail" name="profileEmail" required />
+          </div>
+
+          <div class="form-row form-row-inline">
+            <div>
+              <label for="newPassword">New Password</label>
+              <input type="password" id="newPassword" name="newPassword" />
+            </div>
+            <div>
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" />
+            </div>
+          </div>
+
+          <p class="form-hint">
+            Leave password fields empty if you don't want to change your password.
+          </p>
+
+          <button type="submit" class="btn-save">Save changes</button>
+          <p class="form-status" id="accountStatus" aria-live="polite"></p>
+        </form>
       </div>
     </section>
-  </main>
-
- <!-- ==== FOOTER(Team work) ==== -->
+  </section>
+</main>
+<!-- ==== FOOTER ==== -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-section brand">
@@ -204,7 +186,6 @@
         <h3>Quick Links</h3>
         <ul>
           <li><a href="/Home/Home.html">Home</a></li>
-          <li><a href="/products/products.html">products</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -265,7 +246,7 @@
       <p>Built with ❤️ for your home.</p>
     </div>
   </footer>
-  <script src="/Home/home.js"></script>
+  <script src="/account/account.js"></script>
   <script src="/Cart/header-cart.js" defer></script>
 </body>
 </html>
