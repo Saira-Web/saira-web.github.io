@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ================== PRODUCT META ==================
+  //created a JavaScript list called 
   const PRODUCT_META = [
     {
       id: 1,
@@ -444,6 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================= MAIN FILTERS & SORT =================
+  //linked  to cards 
   const products = cards
     .map((card) => {
       const name = card.querySelector("h4").textContent.trim();
