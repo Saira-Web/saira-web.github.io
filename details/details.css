@@ -396,59 +396,107 @@ header {
 /* ====RESPONSIVE===*/
 
 @media (max-width: 900px) {
-    header {
-    padding: 8px 16px;
-    gap: 20px;
-  }
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  header {
+    padding: 10px 16px;
+    gap: 14px;
   }
 
-  .cats__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .logo img {
+    width: 70px;
+    height: 70px;
   }
 
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .search input {
+    width: min(260px, 45vw);
+  }
+
+  .details-page {
+    margin: 28px auto;
+    padding: 16px;
+  }
+
+  .product-container {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .product-info {
+    max-width: 100%;
   }
 
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 22px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
   }
 }
 
 @media (max-width: 600px) {
   header {
-    padding: 8px 16px;
+    padding: 10px 12px;
     gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 100%;
   }
 
   .nav {
-    display: none; 
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
   }
 
   .search input {
-    width: 180px;
+    width: 100%;
   }
 
-  .cats__grid {
-    grid-template-columns: 1fr;
+  .details-page {
+    margin: 18px auto;
+    padding: 12px;
   }
 
-  .featured-grid {
-    grid-template-columns: 1fr;
+  .product-name {
+    font-size: 1.6rem;
   }
 
-  .featured-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .product-price {
+    font-size: 1.25rem;
   }
 
-  .view-all {
-    align-self: flex-end;
+  .add-to-cart-btn {
+    width: 100%;
   }
 
   .footer-container {
@@ -461,6 +509,7 @@ header {
     text-align: center;
   }
 }
+
 
 
 

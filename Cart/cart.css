@@ -560,70 +560,128 @@ header {
 }
 
 /* ====RESPONSIVE===*/
-
 @media (max-width: 900px) {
-    header {
-    padding: 8px 16px;
-    gap: 20px;
+  header {
+    padding: 10px 16px;
+    gap: 14px;
   }
-  .hero {
+
+  .logo img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .search input {
+    width: min(260px, 45vw);
+  }
+
+  .cart-layout {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .cats__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 8px 16px;
-    gap: 10px;
-  }
-
-  .nav {
-    display: none; 
-  }
-
-  .search input {
-    width: 180px;
-  }
-
-  .cats__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .view-all {
-    align-self: flex-end;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
+    row-gap: 22px;
   }
 
   .footer-bottom {
     flex-direction: column;
     gap: 6px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 10px 12px;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .cart-page {
+    padding: 0 12px;
+  }
+
+  .cart-items {
+    padding: 12px 10px;
+  }
+
+  .cart-summary {
+    padding: 14px 12px;
+  }
+
+  .cart-table thead {
+    display: none;
+  }
+
+  .cart-table,
+  .cart-table tbody,
+  .cart-table tr,
+  .cart-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .cart-table tr {
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 0;
+  }
+
+  .cart-table td {
+    border: none;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-table td::before {
+    font-weight: 700;
+    color: #475569;
+    font-size: 12px;
+    margin-right: 12px;
+  }
+
+  .cart-table td:nth-child(1)::before { content: "Product"; }
+  .cart-table td:nth-child(2)::before { content: "Price"; }
+  .cart-table td:nth-child(3)::before { content: "Quantity"; }
+  .cart-table td:nth-child(4)::before { content: "Subtotal"; }
+  .cart-table td:nth-child(5)::before { content: ""; }
+
+  .footer-container {
+    grid-template-columns: 1fr;
   }
 }

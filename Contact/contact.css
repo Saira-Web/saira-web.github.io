@@ -634,59 +634,110 @@ header {
 /* ====RESPONSIVE===*/
 
 @media (max-width: 900px) {
-    header {
-    padding: 8px 16px;
-    gap: 20px;
+  header {
+    padding: 10px 16px;
+    gap: 14px;
   }
-  .hero {
+
+  .logo img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .search input {
+    width: min(260px, 45vw);
+  }
+
+  .contact-page {
+    padding: 36px 5%;
+  }
+
+  .contact-main {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .cats__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
   }
 
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 22px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
   }
 }
 
 @media (max-width: 600px) {
   header {
-    padding: 8px 16px;
+    padding: 10px 12px;
     gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 100%;
   }
 
   .nav {
-    display: none; 
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
   }
 
   .search input {
-    width: 180px;
+    width: 100%;
   }
 
-  .cats__grid {
-    grid-template-columns: 1fr;
+  .contact-page {
+    padding: 24px 12px;
   }
 
-  .featured-grid {
-    grid-template-columns: 1fr;
+  .contact-hero {
+    margin-bottom: 24px;
   }
 
-  .featured-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .contact-form {
+    padding: 18px 16px 20px;
   }
 
-  .view-all {
-    align-self: flex-end;
+  .info-card {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .map-placeholder {
+    height: 220px;
+  }
+
+  #contactMap {
+    width: 100%;
+    height: 220px;
+  }
+
+  .btn-contact {
+    width: 100%;
   }
 
   .footer-container {
@@ -699,7 +750,3 @@ header {
     text-align: center;
   }
 }
-
-
-
-

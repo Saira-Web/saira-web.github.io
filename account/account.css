@@ -576,72 +576,144 @@ header {
 .footer-bottom p:last-child {
   color: #e2e8f0;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
-/* ====RESPONSIVE===*/
+header {
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.site-footer {
+  background: #0e1625;
+  color: #ffffff;
+  padding: 16px 0 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  position: static;
+  margin: 0;
+  left: auto;
+  right: auto;
+}
+
+.account-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 24px auto 56px;
+  padding: 20px;
+}
+
+.account-layout {
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+.account-content {
+  min-width: 0;
+}
+
+.overview-cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
 
 @media (max-width: 900px) {
-    header {
-    padding: 8px 16px;
-    gap: 20px;
+  header {
+    padding: 10px 16px;
   }
-  .hero {
+
+  .logo img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .search input {
+    width: min(260px, 45vw);
+  }
+
+  .account-layout {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .cats__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .account-page {
+    padding: 16px;
   }
 
   .footer-container {
     grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 8px 16px;
-    gap: 10px;
-  }
-
-  .nav {
-    display: none; 
-  }
-
-  .search input {
-    width: 180px;
-  }
-
-  .cats__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .view-all {
-    align-self: flex-end;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
+    row-gap: 22px;
   }
 
   .footer-bottom {
     flex-direction: column;
     gap: 6px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 10px 12px;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .account-page {
+    margin: 18px auto 40px;
+    padding: 12px;
+  }
+
+  .account-sidebar {
+    padding: 16px 14px;
+  }
+
+  .account-content {
+    padding: 16px 14px;
+  }
+
+  .form-row-inline {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-save {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
   }
 }
